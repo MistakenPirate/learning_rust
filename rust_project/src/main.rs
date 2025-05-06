@@ -24,13 +24,36 @@ fn main() {
     //     println!("You are an adult")
     // }
 
-    let greeting : String = String::from("Hello World");
-    println!("{}", greeting);
-    let char1: Option<char> = greeting.chars().nth(1);
-    match char1{
-        Some(c) => println!("{}", c),
-        None => println!("No character at index 1000"),
+    // let greeting : String = String::from("Hello World");
+    // println!("{}", greeting);
+    // let char1: Option<char> = greeting.chars().nth(1);
+    // match char1{
+    //     Some(c) => println!("{}", c),
+    //     None => println!("No character at index 1000"),
+    // }
+
+    let sentence : String = String::from("sameer is learning rust");
+    let first_word : String = get_first_word(sentence);
+    println!("First word is : {}",first_word);
+
+    let n = 1000;
+    let mut sum = 0;
+    for i in 0..n{
+        if i % 250 == 0{
+            sum += i;
+        }
     }
+    println!("Sum: {}", sum);
 
+}
 
+fn get_first_word(sentence: String) -> String{
+    let mut ans = String::from("");
+    for char in sentence.chars(){
+        ans.push_str(char.to_string().as_str());
+        if char == ' '{
+            break;
+        }
+    }
+    return ans;
 }
