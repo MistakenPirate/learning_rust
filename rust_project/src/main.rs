@@ -1,3 +1,5 @@
+use std::collections::HashMap;
+
 fn main() {
     // let x: i32 = -5;
     // let y: u32 = 1000;
@@ -32,28 +34,78 @@ fn main() {
     //     None => println!("No character at index 1000"),
     // }
 
-    let sentence : String = String::from("sameer is learning rust");
-    let first_word : String = get_first_word(sentence);
-    println!("First word is : {}",first_word);
+    // let sentence : String = String::from("sameer is learning rust");
+    // let first_word : String = get_first_word(sentence);
+    // println!("First word is : {}",first_word);
 
-    let n = 1000;
-    let mut sum = 0;
-    for i in 0..n{
-        if i % 250 == 0{
-            sum += i;
-        }
+    // let n = 1000;
+    // let mut sum = 0;
+    // for i in 0..n{
+    //     if i % 250 == 0{
+    //         sum += i;
+    //     }
+    // }
+    // println!("Sum: {}", sum);
+
+    // let mut vec = Vec::new();
+    // vec.push(1);
+    // vec.push(2);
+    // vec.push(3);
+    // even_values(&mut vec);
+    // println!("{:?}",vec);
+
+    // let numbers = vec![1,2,3];
+    // for number in numbers{
+    //     println!("{}", number);
+    // }
+
+    // let mut users: HashMap<String, i32> = HashMap::new();
+    // users.insert(String::from("sameer"),21);
+    // users.insert(String::from("zoro"),22);
+
+    // let user1 = users.get("sameer");
+
+    // println!("{}", user1.unwrap())
+
+    let pairs: Vec<(String, i32)> = vec![
+        (String::from("sameer"),21),
+        (String::from("zoro"),22)
+    ];
+
+    let grouped_pairs = group_values_by_key(pairs);
+    for (key, value) in grouped_pairs{
+        println!("{}: {:?}", key, value);
     }
-    println!("Sum: {}", sum);
 
 }
 
-fn get_first_word(sentence: String) -> String{
-    let mut ans = String::from("");
-    for char in sentence.chars(){
-        ans.push_str(char.to_string().as_str());
-        if char == ' '{
-            break;
-        }
+fn group_values_by_key(pairs: Vec<(String, i32)>) -> HashMap<String, i32>{
+    let mut map = HashMap::new();
+    for (key, value) in pairs{
+        map.insert(key, value);
     }
-    return ans;
+    return map;
 }
+
+
+// fn even_values(v: &mut Vec<i32>){
+//     let mut i = 0;
+//     while i < v.len(){
+//         if v[i] % 2 != 0{
+//             v.remove(i);
+//         } else {
+//             i += 1;
+//         }
+//     }
+// }
+
+// fn get_first_word(sentence: String) -> String{
+//     let mut ans = String::from("");
+//     for char in sentence.chars(){
+//         ans.push_str(char.to_string().as_str());
+//         if char == ' '{
+//             break;
+//         }
+//     }
+//     return ans;
+// }
