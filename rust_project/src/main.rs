@@ -1,4 +1,4 @@
-use std::collections::HashMap;
+// use std::collections::HashMap;
 
 fn main() {
     // let x: i32 = -5;
@@ -67,25 +67,85 @@ fn main() {
 
     // println!("{}", user1.unwrap())
 
-    let pairs: Vec<(String, i32)> = vec![
-        (String::from("sameer"),21),
-        (String::from("zoro"),22)
-    ];
+    // let pairs: Vec<(String, i32)> = vec![
+    //     (String::from("sameer"),21),
+    //     (String::from("zoro"),22)
+    // ];
 
-    let grouped_pairs = group_values_by_key(pairs);
-    for (key, value) in grouped_pairs{
-        println!("{}: {:?}", key, value);
-    }
+    // let grouped_pairs = group_values_by_key(pairs);
+    // for (key, value) in grouped_pairs{
+    //     println!("{}: {:?}", key, value);
+    // }
+
+    // the iter method in rust provides a way to iterate over the elements
+    // of a collection by borrowing them.
+    // we cant mutate the variable since we have an immutable reference to
+    // the iternal elements
+
+    // let nums = vec![1,2,3];
+    // let iter = nums.iter();
+
+    // for value in iter{
+    //     println!("{}", value);
+    // }
+
+    // we cant mutate the data below either
+    // the iterator is mutable but the inner elements (val)
+    // still is an immutable reference
+
+    // let nums = vec![1,2,3];
+    // let mut iter = nums.iter();
+
+    // while let Some(val) = iter.next(){
+    //     print!("{}", val)
+    // }
+
+    // iterMut
+
+    // let mut nums = vec![1,2,3];
+    // let iter = nums.iter_mut();
+
+    // for value in iter{
+    //     *value = *value + 1;
+    // }
+
+    // println!("{:?}", nums)
+
+
+    // IntoIter
+    // the intoiterator trait is used to convert 
+    // a collection into an iterator that takes ownership
+    // of the collection
+    // useful when:
+    // 1. you no longer need the original collection
+    // when you need to squeeze performance benefits by transferring
+    // ownership (avoiding references)
+
+    // let nums = vec![1,2,3];
+    // let iter = nums.into_iter();
+
+    // for value in iter{
+    //     println!("{}", value);
+    // }
+
+    // the above code is same as the original iterator i.e
+    // for value in nums{
+    //     println!("{}", value);
+    // }
+
+    // 1. Iter: if you want immutable references to the inner variable but dont want to transfer ownership
+    // 2. IterMut: if you want mutable references to the inner variable dont want to transfer ownership
+    // 3. IterInto: If you want to move the variable into the iterator and don't want to use it afterwards
 
 }
 
-fn group_values_by_key(pairs: Vec<(String, i32)>) -> HashMap<String, i32>{
-    let mut map = HashMap::new();
-    for (key, value) in pairs{
-        map.insert(key, value);
-    }
-    return map;
-}
+// fn group_values_by_key(pairs: Vec<(String, i32)>) -> HashMap<String, i32>{
+//     let mut map = HashMap::new();
+//     for (key, value) in pairs{
+//         map.insert(key, value);
+//     }
+//     return map;
+// }
 
 
 // fn even_values(v: &mut Vec<i32>){
